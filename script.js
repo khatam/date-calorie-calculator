@@ -25,6 +25,14 @@ function calculateCaloriesByQuantity() {
 
   // دریافت نوع خرما و محاسبه کالری
   const selectedDate = document.getElementById("date-type").value;
+
+  if (!dateData[selectedDate]) {
+    resultDiv.textContent = "نوع خرما انتخاب شده معتبر نیست.";
+    resultDiv.classList.remove("d-none", "alert-success");
+    resultDiv.classList.add("alert-danger");
+    return;
+  }
+
   const calories = dateData[selectedDate].calories * quantity;
 
   resultDiv.textContent = `مجموع کالری بر اساس تعداد خرما: ${calories} کالری`;
