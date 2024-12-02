@@ -2,7 +2,7 @@
 function calculateCaloriesByQuantity() {
   const dateType = document.getElementById("date-type").value;
   const quantity = parseInt(document.getElementById("quantity").value);
-  const resultDiv = document.getElementById("result");
+  const resultDiv = document.getElementById("result-quantity");
 
   // اطلاعات وزن و کالری هر خرما
   const dateData = {
@@ -44,7 +44,7 @@ function calculateCaloriesByQuantity() {
 function calculateCaloriesByWeight() {
   const dateTypeWeight = document.getElementById("date-type-weight").value;
   const weight = parseFloat(document.getElementById("weight").value);
-  const resultDiv = document.getElementById("result");
+  const resultDiv = document.getElementById("result-weight");
 
   // اطلاعات کالری در هر گرم
   const dateTypeData = {
