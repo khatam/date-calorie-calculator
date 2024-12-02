@@ -1,7 +1,7 @@
 // محاسبه بر اساس تعداد خرما
 function calculateCaloriesByQuantity() {
   const dateType = document.getElementById("date-type").value;
-  const quantity = document.getElementById("quantity").value;
+  const quantity = parseInt(document.getElementById("quantity").value);
   const resultDiv = document.getElementById("result");
 
   // اطلاعات وزن و کالری هر خرما
@@ -12,10 +12,11 @@ function calculateCaloriesByQuantity() {
     "خرما خاصویی": { weight: 5, calories: 14 },
     "خرمای پیارم": { weight: 16, calories: 48 },
     "خرمای مجول": { weight: 24, calories: 72 },
-    "خرمای شاهانی": { weight: 9, calories: 27 }  // داده جدید
+    "خرمای شاهانی": { weight: 9, calories: 27 }
   };
 
-  if (quantity <= 0 || isNaN(quantity)) {
+  // بررسی ورودی تعداد خرما
+  if (isNaN(quantity) || quantity <= 0) {
     resultDiv.textContent = "لطفاً تعداد معتبر وارد کنید.";
     resultDiv.classList.remove("d-none", "alert-success");
     resultDiv.classList.add("alert-danger");
@@ -23,10 +24,10 @@ function calculateCaloriesByQuantity() {
   }
 
   // دریافت نوع خرما و محاسبه کالری
-  const selectedDate = document.getElementById("date-type").options[document.getElementById("date-type").selectedIndex].text;
+  const selectedDate = document.getElementById("date-type").value;
   const calories = dateData[selectedDate].calories * quantity;
 
-  resultDiv.textContent = `مجموع کالری بر اساس تعداد: ${calories} کالری`;
+  resultDiv.textContent = `مجموع کالری بر اساس تعداد خرما: ${calories} کالری`;
   resultDiv.classList.remove("d-none", "alert-danger");
   resultDiv.classList.add("alert-success");
 }
@@ -34,7 +35,7 @@ function calculateCaloriesByQuantity() {
 // محاسبه بر اساس وزن خرما
 function calculateCaloriesByWeight() {
   const dateTypeWeight = document.getElementById("date-type-weight").value;
-  const weight = document.getElementById("weight").value;
+  const weight = parseFloat(document.getElementById("weight").value);
   const resultDiv = document.getElementById("result");
 
   // اطلاعات کالری در هر گرم
@@ -43,7 +44,8 @@ function calculateCaloriesByWeight() {
     "خرمای خشک": 3   // 300 کالری در 100 گرم
   };
 
-  if (weight <= 0 || isNaN(weight)) {
+  // بررسی ورودی وزن خرما
+  if (isNaN(weight) || weight <= 0) {
     resultDiv.textContent = "لطفاً وزن معتبر وارد کنید.";
     resultDiv.classList.remove("d-none", "alert-success");
     resultDiv.classList.add("alert-danger");
@@ -52,7 +54,7 @@ function calculateCaloriesByWeight() {
 
   // محاسبه کالری
   const calories = dateTypeData[dateTypeWeight] * weight;
-  resultDiv.textContent = `مجموع کالری بر اساس وزن: ${calories} کالری`;
+  resultDiv.textContent = `مجموع کالری بر اساس وزن خرما: ${calories} کالری`;
   resultDiv.classList.remove("d-none", "alert-danger");
   resultDiv.classList.add("alert-info");
 }
