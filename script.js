@@ -1,7 +1,7 @@
 // محاسبه بر اساس تعداد خرما
 function calculateCaloriesByQuantity() {
   const dateType = document.getElementById("date-type").value;
-  const quantity = parseInt(document.getElementById("quantity").value);
+  const quantity = parseInt(document.getElementById("quantity").value, 10);
   const resultDiv = document.getElementById("result-quantity");
 
   // اطلاعات وزن و کالری هر خرما
@@ -24,16 +24,14 @@ function calculateCaloriesByQuantity() {
   }
 
   // دریافت نوع خرما و محاسبه کالری
-  const selectedDate = document.getElementById("date-type").value;
-
-  if (!dateData[selectedDate]) {
+  if (!dateData[dateType]) {
     resultDiv.textContent = "نوع خرما انتخاب شده معتبر نیست.";
     resultDiv.classList.remove("d-none", "alert-success");
     resultDiv.classList.add("alert-danger");
     return;
   }
 
-  const calories = dateData[selectedDate].calories * quantity;
+  const calories = dateData[dateType].calories * quantity;
 
   resultDiv.textContent = `مجموع کالری بر اساس تعداد خرما: ${calories} کالری`;
   resultDiv.classList.remove("d-none", "alert-danger");
@@ -62,6 +60,7 @@ function calculateCaloriesByWeight() {
 
   // محاسبه کالری
   const calories = dateTypeData[dateTypeWeight] * weight;
+
   resultDiv.textContent = `مجموع کالری بر اساس وزن خرما: ${calories} کالری`;
   resultDiv.classList.remove("d-none", "alert-danger");
   resultDiv.classList.add("alert-info");
