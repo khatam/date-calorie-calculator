@@ -3,6 +3,7 @@ function calculateCaloriesByQuantity() {
   const dateType = document.getElementById("date-type").value;
   const quantity = parseInt(document.getElementById("quantity").value, 10);
   const resultDiv = document.getElementById("result-quantity");
+console.log("فایل جاوااسکریپت به درستی متصل است.");
 
   // اطلاعات وزن و کالری هر خرما
   const dateData = {
